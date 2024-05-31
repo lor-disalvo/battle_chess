@@ -24,7 +24,7 @@ class GameHandler {
   List<Piece?> board = List<Piece?>.filled(64, null);
 
   // Initialising
-  BattlePiece createPiece(PieceColor color, PieceType type) {
+  static BattlePiece createPiece(PieceColor color, PieceType type) {
     switch (type) {
       case pawn:
         return BattlePiece.pawn(color);
@@ -47,9 +47,16 @@ class GameHandler {
   }
 
   // TODO implement initial board
-  static initialBoard() {
-    return;
-  }
+  static initialBoard() => List<Piece?>.generate(64, (index) {
+        PieceColor color = index > 16 ? white : black;
+        if (initialPawnPos.contains(index)) return createPiece(color, pawn);
+        if (initialRookPos.contains(index)) return createPiece(color, rook);
+        if (initialKnightPos.contains(index)) return createPiece(color, knight);
+        if (initialBishopPos.contains(index)) return createPiece(color, bishop);
+        if (initialQueenPos.contains(index)) return createPiece(color, queen);
+        if (initialKingPos.contains(index)) return createPiece(color, king);
+        return null;
+      });
 }
 
 class Move {

@@ -1,7 +1,4 @@
-import 'package:battle_chess/util/pieces.dart';
 import 'package:equatable/equatable.dart';
-
-import '../util/constants.dart';
 
 class BoardEvent extends Equatable {
   @override

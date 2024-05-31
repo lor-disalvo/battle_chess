@@ -1,5 +1,4 @@
 import 'package:battle_chess/bloc/board_bloc.dart';
-import 'package:battle_chess/bloc/board_event.dart';
 import 'package:battle_chess/bloc/board_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
