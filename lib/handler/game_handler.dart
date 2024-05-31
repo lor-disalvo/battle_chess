@@ -45,6 +45,11 @@ class GameHandler {
   void nextTurn() {
     turn = (turn == white) ? black : white;
   }
+
+  // TODO implement initial board
+  static initialBoard() {
+    return;
+  }
 }
 
 class Move {

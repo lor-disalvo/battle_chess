@@ -25,15 +25,8 @@ class DiceRoller {
 class Piece {
   final PieceType type;
   final PieceColor color;
-  int? row;
-  int? column;
 
   Piece(this.type, this.color);
-
-  void setPosition(int row, int column) {
-    this.row = row;
-    this.column = column;
-  }
 }
 
 class BattlePiece extends Piece {

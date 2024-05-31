@@ -15,6 +15,7 @@ class BattleChess extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Battle Chess',
       theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
