@@ -1,0 +1,1 @@
+class NoHealthException implements Exception {}

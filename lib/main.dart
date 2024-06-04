@@ -18,7 +18,7 @@ class BattleChess extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Battle Chess',
       theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
           useMaterial3: true),
       home: BlocProvider(
           create: (context) => BoardBloc(), child: const HomePage()),

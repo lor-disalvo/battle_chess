@@ -1,5 +1,6 @@
 import 'package:battle_chess/handler/assets_handler.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:battle_chess/util/exceptions.dart';
+import 'package:flutter/material.dart';
 
 import '../bloc/board_event.dart';
 import 'constants.dart';
@@ -133,7 +134,7 @@ class BattlePiece extends Piece {
   void takeDamage(int dmg) {
     int hp = currentHealth - dmg;
     if (hp < 1) {
-      throw ArgumentError();
+      throw NoHealthException();
     }
     currentHealth = hp;
   }

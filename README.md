@@ -1,16 +1,17 @@
-# battle_chess
+# Battle Chess
 
-Chess Wargame
+Have you ever played Chess and thought "I think each Piece should have a unique set of abilities", or
+"I really like this but it's a bummer I cannot move the Pieces as I please."
 
-## Getting Started
+Well, look no further, my inexplicably pedantic friend, for this is a version of Chess that combines
+an approximation of D&D 5e Combat Rules with the beloved game of Chess.
 
-This project is a starting point for a Flutter application.
+## But Why Though?
+Because.
 
-A few resources to get you started if this is your first Flutter project:
+## How does this even work?
+All Pieces have a Health Bar, a Movement Speed, a Base Damage and a Set of Abilities they can use.
+The Player takes control of the King, which gives orders to one other Piece per turn with the 
+objective of destroying the opponent's King. 
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+To do this, you have to attack the opponent's Pieces with your own. 
