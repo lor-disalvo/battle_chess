@@ -31,3 +31,6 @@ const Set<int> initialKnightPos = {1, 6, 57, 62};
 const Set<int> initialBishopPos = {2, 5, 58, 61};
 const Set<int> initialQueenPos = {3, 59};
 const Set<int> initialKingPos = {4, 60};
+
+
+const String imagePath = "assets/images/";

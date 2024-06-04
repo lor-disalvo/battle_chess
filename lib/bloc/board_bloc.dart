@@ -4,5 +4,5 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 /// This is the chess_board.dart counterpart
 class BoardBloc extends Bloc<BoardEvent, BoardState> {
-  BoardBloc() : super(PlaceholderState());
+  BoardBloc() : super(InitialState());
 }

@@ -3,6 +3,8 @@ import 'package:battle_chess/util/pieces.dart';
 
 // this is the chess.dart counterpart
 class GameHandler {
+  static final GameHandler _instance = GameHandler._internal();
+
   // Constants/Class Variables
   static const PieceColor black = PieceColor.black;
   static const PieceColor white = PieceColor.white;
@@ -21,7 +23,13 @@ class GameHandler {
 
   // Instance Variables
   PieceColor turn = white;
-  List<Piece?> board = List<Piece?>.filled(64, null);
+  List<Piece?> board = initialBoard();
+
+  factory GameHandler() {
+    return _instance;
+  }
+
+  GameHandler._internal();
 
   // Initialising
   static BattlePiece createPiece(PieceColor color, PieceType type) {

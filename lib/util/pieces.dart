@@ -1,3 +1,4 @@
+import 'package:battle_chess/handler/assets_handler.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../bloc/board_event.dart';
@@ -25,6 +26,7 @@ class DiceRoller {
 class Piece {
   final PieceType type;
   final PieceColor color;
+  late BoxDecoration _image;
 
   Piece(this.type, this.color);
 }
@@ -46,8 +48,7 @@ class BattlePiece extends Piece {
       : maxHealth = 5,
         maxSpeed = 1,
         super(PieceType.pawn, color) {
-    resetHealth();
-    resetMove();
+    _init();
   }
 
   BattlePiece.knight(PieceColor color)
@@ -55,24 +56,21 @@ class BattlePiece extends Piece {
         maxSpeed = 0,
         secondAttack = true,
         super(PieceType.knight, color) {
-    resetHealth();
-    resetMove();
+    _init();
   }
 
   BattlePiece.bishop(PieceColor color)
       : maxHealth = 10,
         maxSpeed = 5,
         super(PieceType.bishop, color) {
-    resetHealth();
-    resetMove();
+    _init();
   }
 
   BattlePiece.rook(PieceColor color)
       : maxHealth = 30,
         maxSpeed = 5,
         super(PieceType.rook, color) {
-    resetHealth();
-    resetMove();
+    _init();
   }
 
   BattlePiece.queen(PieceColor color)
@@ -80,24 +78,29 @@ class BattlePiece extends Piece {
         maxSpeed = 5,
         secondAttack = true,
         super(PieceType.queen, color) {
-    resetHealth();
-    resetMove();
+    _init();
   }
 
   BattlePiece.king(PieceColor color)
       : maxHealth = 50,
         maxSpeed = 1,
         super(PieceType.king, color) {
-    resetHealth();
-    resetMove();
+    _init();
   }
 
   Draggable get toDraggable => Draggable(
-        axis: Axis.vertical,
         childWhenDragging: Container(),
         feedback: const Placeholder(),
-        child: const Placeholder(),
+        child: Container(
+          decoration: _image,
+        ),
       );
+
+  void _init() {
+    _image = AssetsHandler().getPieceDecoration(type, color);
+    resetHealth();
+    resetMove();
+  }
 
   // Combat Methods
   // TODO change this to a Board Event
