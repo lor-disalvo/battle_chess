@@ -30,6 +30,10 @@ class Piece {
   late BoxDecoration _image;
 
   Piece(this.type, this.color);
+
+  get icon => Container(decoration: _image);
+
+  get toDraggable => null;
 }
 
 class BattlePiece extends Piece {
@@ -89,19 +93,19 @@ class BattlePiece extends Piece {
     _init();
   }
 
-  Draggable get toDraggable => Draggable(
-        childWhenDragging: Container(),
-        feedback: const Placeholder(),
-        child: Container(
-          decoration: _image,
-        ),
-      );
-
   void _init() {
     _image = AssetsHandler().getPieceDecoration(type, color);
     resetHealth();
     resetMove();
   }
+
+  @override
+  get toDraggable => Draggable(
+        childWhenDragging: Container(),
+        feedback: icon,
+        child: icon,
+        data: [type, color],
+      );
 
   // Combat Methods
   // TODO change this to a Board Event

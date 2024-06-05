@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class AssetsHandler {
   static final AssetsHandler _instance = AssetsHandler._internal();
 
-  get board => customDecoration("$imagePath.Board.png");
+  get board => customDecoration("$imagePath""Board.png");
 
   factory AssetsHandler() {
     return _instance;
@@ -38,6 +38,6 @@ class AssetsHandler {
         piece = "King";
     }
 
-    return customDecoration("$imagePath.$col.$piece.png");
+    return customDecoration("$imagePath$col$piece.png");
   }
 }

@@ -25,9 +25,7 @@ class GameHandler {
   PieceColor turn = white;
   List<Piece?> board = initialBoard();
 
-  factory GameHandler() {
-    return _instance;
-  }
+  factory GameHandler() => _instance;
 
   GameHandler._internal();
 
@@ -49,22 +47,24 @@ class GameHandler {
     }
   }
 
+  static initialBoard() => List<Piece?>.generate(64, (index) {
+        PieceColor color = index > 16 ? white : black;
+        PieceType? type;
+
+        if (initialPawnPosition.contains(index)) type = pawn;
+        if (initialRookPosition.contains(index)) type = rook;
+        if (initialKnightPosition.contains(index)) type = knight;
+        if (initialBishopPosition.contains(index)) type = bishop;
+        if (initialQueenPosition.contains(index)) type = queen;
+        if (initialKingPosition.contains(index)) type = king;
+
+        return type == null ? null : createPiece(color, type);
+      });
+
   // Utility Methods
   void nextTurn() {
     turn = (turn == white) ? black : white;
   }
-
-  // TODO implement initial board
-  static initialBoard() => List<Piece?>.generate(64, (index) {
-        PieceColor color = index > 16 ? white : black;
-        if (initialPawnPos.contains(index)) return createPiece(color, pawn);
-        if (initialRookPos.contains(index)) return createPiece(color, rook);
-        if (initialKnightPos.contains(index)) return createPiece(color, knight);
-        if (initialBishopPos.contains(index)) return createPiece(color, bishop);
-        if (initialQueenPos.contains(index)) return createPiece(color, queen);
-        if (initialKingPos.contains(index)) return createPiece(color, king);
-        return null;
-      });
 }
 
 class Move {
