@@ -18,8 +18,8 @@ class BoardInterface extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            BlocBuilder<BoardBloc, BoardState>(
-              bloc: context.read<BoardBloc>(),
+            BlocBuilder<BoardCubit, BoardState>(
+              bloc: context.read<BoardCubit>(),
               builder: (context, BoardState state) {
                 return ChessBoardUI(context, state);
               },
@@ -43,8 +43,14 @@ class ChessBoardUI extends StatelessWidget {
       return Container(
         color: getSquareColor(index),
         child: gameState[index] == null
-            ? Container()
-            : gameState[index]!.toDraggable,
+            ? DragTarget(
+                builder: (context, candidateData, rejectedData) {
+                  return gameState[index] != null
+                      ? gameState[index]!.icon
+                      : Container();
+                },
+              )
+            : gameState[index]?.toDraggable(context),
       );
     });
   }

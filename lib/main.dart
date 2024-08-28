@@ -1,4 +1,5 @@
 import 'package:battle_chess/bloc/board_bloc.dart';
+import 'package:battle_chess/handler/game_handler.dart';
 import 'package:battle_chess/ui/board_interface.dart';
 import 'package:battle_chess/ui/user_interface.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,7 @@ class BattleChess extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
           useMaterial3: true),
       home: BlocProvider(
-        create: (context) => BoardBloc(),
+        create: (context) => BoardCubit(GameHandler.initialBoard()), // TODO change initialBoard to a State
         child: const HomePage(),
       ),
     );

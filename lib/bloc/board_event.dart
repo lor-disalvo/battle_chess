@@ -1,11 +1,11 @@
 import 'package:equatable/equatable.dart';
 
-class BoardEvent extends Equatable {
+abstract class BoardEvent extends Equatable {
   @override
   List<Object?> get props => throw UnimplementedError();
 }
 
-
+class PieceMovedEvent extends BoardEvent {}
 
 // class Action {
 //   final ActionType type;
