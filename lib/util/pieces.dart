@@ -27,7 +27,7 @@ class DiceRoller {
 class Piece {
   final PieceType type;
   final PieceColor color;
-  late BoxDecoration _image;
+  BoxDecoration _image = AssetsHandler().genericPiece;
 
   Piece(this.type, this.color);
 

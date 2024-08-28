@@ -5,6 +5,7 @@ class AssetsHandler {
   static final AssetsHandler _instance = AssetsHandler._internal();
 
   get board => customDecoration("$imagePath""Board.png");
+  get genericPiece => customDecoration("$imagePath""GenericPiece.png");
 
   factory AssetsHandler() {
     return _instance;

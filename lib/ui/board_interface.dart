@@ -6,9 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BoardInterface extends StatelessWidget {
-  const BoardInterface({
-    super.key,
-  });
+  const BoardInterface({super.key});
 
   @override
   Widget build(BuildContext context) {
