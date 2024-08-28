@@ -30,23 +30,6 @@ class GameHandler {
   GameHandler._internal();
 
   // Initialising
-  static BattlePiece createPiece(PieceColor color, PieceType type) {
-    switch (type) {
-      case pawn:
-        return BattlePiece.pawn(color);
-      case knight:
-        return BattlePiece.knight(color);
-      case bishop:
-        return BattlePiece.bishop(color);
-      case rook:
-        return BattlePiece.rook(color);
-      case queen:
-        return BattlePiece.queen(color);
-      case king:
-        return BattlePiece.king(color);
-    }
-  }
-
   static initialBoard() => List<Piece?>.generate(64, (index) {
         PieceColor color = index > 16 ? white : black;
         PieceType? type;
@@ -58,7 +41,7 @@ class GameHandler {
         if (initialQueenPosition.contains(index)) type = queen;
         if (initialKingPosition.contains(index)) type = king;
 
-        return type == null ? null : createPiece(color, type);
+        return type == null ? null : BattlePiece(type, color, index);
       });
 
   // Utility Methods

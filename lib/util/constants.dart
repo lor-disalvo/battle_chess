@@ -6,6 +6,15 @@ enum PieceColor { white, black }
 
 enum ActionType { attack, movement, support }
 
+Map<PieceType, Set<int>> pieceStats = {
+  PieceType.pawn: {5, 1},
+  PieceType.knight: {20, 0},
+  PieceType.bishop: {10, 5},
+  PieceType.rook: {30, 5},
+  PieceType.queen: {25, 5},
+  PieceType.king: {50, 1}
+};
+
 final List<int> initialPawnPosition = List.generate(8, (index) => index + 8)
   ..addAll(List.generate(8, (index) => index + 48));
 

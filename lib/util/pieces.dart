@@ -2,7 +2,6 @@ import 'package:battle_chess/handler/assets_handler.dart';
 import 'package:battle_chess/util/exceptions.dart';
 import 'package:flutter/material.dart';
 
-import '../bloc/board_event.dart';
 import 'constants.dart';
 import 'dart:math';
 
@@ -28,79 +27,40 @@ class Piece {
   final PieceType type;
   final PieceColor color;
   late BoxDecoration _image;
+  int position;
 
-  Piece(this.type, this.color);
+  Piece(this.type, this.color, this.position);
 
   get icon => Container(decoration: _image);
 
-  get toDraggable => null;
+  Draggable? toDraggable(context) {
+    return null;
+  }
 }
 
 class BattlePiece extends Piece {
   // Class Variables
-  Piece get basePiece => Piece(type, color);
+  Piece get basePiece => Piece(type, color, position);
   DiceRoller roll = DiceRoller();
   bool secondAttack = false;
   final int maxHealth;
   final int maxSpeed;
 
   // Instance Variables
-  List<BoardEvent> actionList = <BoardEvent>[];
   late int currentHealth;
   late int currentSpeed;
 
-  BattlePiece.pawn(PieceColor color)
-      : maxHealth = 5,
-        maxSpeed = 1,
-        super(PieceType.pawn, color) {
-    _init();
-  }
-
-  BattlePiece.knight(PieceColor color)
-      : maxHealth = 20,
-        maxSpeed = 0,
-        secondAttack = true,
-        super(PieceType.knight, color) {
-    _init();
-  }
-
-  BattlePiece.bishop(PieceColor color)
-      : maxHealth = 10,
-        maxSpeed = 5,
-        super(PieceType.bishop, color) {
-    _init();
-  }
-
-  BattlePiece.rook(PieceColor color)
-      : maxHealth = 30,
-        maxSpeed = 5,
-        super(PieceType.rook, color) {
-    _init();
-  }
-
-  BattlePiece.queen(PieceColor color)
-      : maxHealth = 25,
-        maxSpeed = 5,
-        secondAttack = true,
-        super(PieceType.queen, color) {
-    _init();
-  }
-
-  BattlePiece.king(PieceColor color)
-      : maxHealth = 50,
-        maxSpeed = 1,
-        super(PieceType.king, color) {
-    _init();
-  }
-
-  void _init() {
+  BattlePiece(super.type, super.color, super.position)
+      : maxHealth = pieceStats[type]!.first,
+        maxSpeed = pieceStats[type]!.last {
+    secondAttack = (type == PieceType.knight) || (type == PieceType.queen);
     _image = AssetsHandler().getPieceDecoration(type, color);
     resetHealth();
     resetMove();
   }
 
   @override
-  get toDraggable => Draggable(
+  Draggable toDraggable(context) => Draggable(
         childWhenDragging: Container(),
         feedback: icon,
         child: icon,
