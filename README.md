@@ -9,6 +9,8 @@ an approximation of D&D 5e Combat Rules with the beloved game of Chess.
 ## But Why Though?
 Because.
 
+Also, to refine my knowledge of Flutter.
+
 ## How does this even work?
 All Pieces have a Health Bar, a Movement Speed, a Base Damage and a Set of Abilities they can use.
 The Player takes control of the King, which gives orders to one other Piece per turn with the 
